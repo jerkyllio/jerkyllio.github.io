@@ -1,0 +1,45 @@
+
+<footer class="footer py-4 js-page-footer">
+  <div class="main">
+
+    {%- assign _site_author = site.author -%}
+    {%- if _site_author.type == 'organization' -%}
+      {%- assign _site_author_itemtype = 'http://schema.org/Organization' -%}
+    {%- else -%}
+      {%- assign _site_author_itemtype = 'http://schema.org/Person' -%}
+    {%- endif -%}
+
+    <div itemscope itemtype="{{ _site_author_itemtype }}">
+      <meta itemprop="name" content="{{ _site_author.name }}">
+      {%- assign _site_author_url = _site_author.url | default: '/'-%}
+      {%- include snippets/get-nav-url.html path=_site_author_url -%}
+      {%- assign _site_author_url = __return -%}
+      <meta itemprop="url" content="{{ _site_author_url }}">
+      {%- if _site_author.bio -%}
+        <meta itemprop="description" content="{{ _site_author.bio }}">
+      {%- endif -%}
+      <div class="footer__author-links">
+        {%- include author-links.html author=_site_author -%}<a href="https://6sixfigures.com/" target="_blank" rel="noreferrer noopener" style="color:#ffffff; text-decoration:none;">식스피겨</a>
+        <a href="https://formyfinance.com/" target="_blank" rel="noreferrer noopener" style="color:#ffffff; text-decoration:none;">포마이파이넨스</a>
+        <a href="https://healthmaster.co.kr/" target="_blank" rel="noreferrer noopener" style="color:#ffffff; text-decoration:none;">헬스마스터</a>
+        <a href="https://newspics.co.kr/" target="_blank" rel="noreferrer noopener" style="color:#ffffff; text-decoration:none;">뉴스픽스</a>
+        <a href="https://gaseongbitem.com/" target="_blank" rel="noreferrer noopener" style="color:#ffffff; text-decoration:none;">가성비템</a>
+        <a href="https://aliexpresss.kr/" target="_blank" rel="noreferrer noopener" style="color:#ffffff; text-decoration:none;">알리익스프레스</a>
+        <a href="https://dapjidown.com/" target="_blank" rel="noreferrer noopener" style="color:#ffffff; text-decoration:none;">답지다운</a>
+        <a href="https://surls.kr/" target="_blank" rel="noreferrer noopener" style="color:#ffffff; text-decoration:none;">surls.kr/</a>
+        <a href="https://m-y1.com/" target="_blank" rel="noreferrer noopener" style="color:#ffffff; text-decoration:none;">m-y1.com/</a>
+        <a href="specialtem.co.kr" target="_blank" rel="noreferrer noopener" style="color:#ffffff; text-decoration:none;">specialtem.co.kr</a>
+      </div>
+    </div>
+    {%- include snippets/get-locale-string.html key='COPYRIGHT_DATES' -%}
+    {%- assign _locale_copyright_dates = __return -%}
+    <div class="site-info mt-2">
+      <div>
+        {%- include snippets/get-locale-string.html key='COPYRIGHT_DATES' -%}
+        {%- assign _locale_copyright_dates = __return -%}
+        © {{ site.title }} {{ _locale_copyright_dates }},
+        Powered by Jekyll& TeXt Theme.
+      </div>
+    </div>
+  </div>
+</footer>
